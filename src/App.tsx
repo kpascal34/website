@@ -329,6 +329,7 @@ const App: React.FC = () => {
               formStatus={formStatus}
               handleInputChange={handleInputChange}
               handleSubmit={handleSubmit}
+              scrollToSection={scrollToSection}
             />
           } />
           <Route path="/services/door-supervision" element={<DoorSupervision />} />

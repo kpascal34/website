@@ -24,6 +24,7 @@ interface HomeProps {
   formStatus: 'idle' | 'submitting' | 'success' | 'error';
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   handleSubmit: (e: React.FormEvent) => void;
+  scrollToSection: (sectionId: string) => void;
 }
 
 const Home: React.FC<HomeProps> = ({
@@ -38,7 +39,8 @@ const Home: React.FC<HomeProps> = ({
   formErrors,
   formStatus,
   handleInputChange,
-  handleSubmit
+  handleSubmit,
+  scrollToSection
 }) => {
   return (
     <main>
@@ -76,7 +78,7 @@ const Home: React.FC<HomeProps> = ({
             </a>
           </div>
           <div className="cta-group animate-fade-in">
-            <a href="#services" className="cta-button secondary">Our Services</a>
+            <button onClick={() => scrollToSection('services')} className="cta-button secondary">Our Services</button>
           </div>
         </div>
         <div className="slide-indicators">
