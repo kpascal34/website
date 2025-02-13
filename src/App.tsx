@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
+import { scrollToSection, scrollToTop } from './utils/scrollUtils';
 import './App.css';
 import './styles/ServicePages.css';
 import Home from './pages/Home';
@@ -27,6 +28,21 @@ const FALLBACK_GRADIENTS = {
   1: 'linear-gradient(45deg, #000000, #1a1a1a)',
   2: 'linear-gradient(135deg, #1a1a1a, #333333)',
   3: 'linear-gradient(225deg, #333333, #000000)'
+};
+
+const ScrollHandler = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      // Wait for the DOM to be ready
+      setTimeout(() => {
+        scrollToSection(location.hash);
+      }, 0);
+    }
+  }, [location]);
+
+  return null;
 };
 
 const App: React.FC = () => {
@@ -255,12 +271,29 @@ const App: React.FC = () => {
     }
   };
 
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+
+    if (path === '/') {
+      scrollToTop();
+    } else if (path.includes('#')) {
+      const sectionId = path.split('#')[1];
+      if (!scrollToSection(sectionId)) {
+        window.location.href = path;
+      }
+    } else {
+      window.location.href = path;
+    }
+  };
+
   return (
-    <Router basename={process.env.NODE_ENV === 'production' ? '/website' : '/'}>
+    <Router>
       <div className={`App ${isDarkTheme ? 'dark' : 'light'}`}>
+        <ScrollHandler />
         <nav className="navbar">
           <div className="logo">
-            <Link to="/">
+            <Link to="/" onClick={(e) => handleNavigation(e, '/')}>
               <img 
                 src="/images/logo.png" 
                 alt="Fortis Security" 
@@ -274,10 +307,10 @@ const App: React.FC = () => {
             <span className={`hamburger ${isMenuOpen ? 'open' : ''}`}></span>
           </button>
           <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-            <Link to="/" onClick={() => setIsMenuOpen(false)}>HOME</Link>
-            <a href="/#about" onClick={() => setIsMenuOpen(false)}>ABOUT</a>
-            <a href="/#services" onClick={() => setIsMenuOpen(false)}>SERVICES</a>
-            <Link to="/contact" onClick={() => setIsMenuOpen(false)}>CONTACT</Link>
+            <Link to="/" onClick={(e) => handleNavigation(e, '/')}>HOME</Link>
+            <Link to="/#about" onClick={(e) => handleNavigation(e, '/#about')}>ABOUT</Link>
+            <Link to="/#services" onClick={(e) => handleNavigation(e, '/#services')}>SERVICES</Link>
+            <Link to="/contact" onClick={(e) => handleNavigation(e, '/contact')}>CONTACT</Link>
           </div>
         </nav>
 
@@ -321,10 +354,10 @@ const App: React.FC = () => {
             <div className="footer-section">
               <h3>Quick Links</h3>
               <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><a href="/#about">About Us</a></li>
-                <li><a href="/#services">Our Services</a></li>
-                <li><a href="/#contact">Contact</a></li>
+                <li><Link to="/" onClick={(e) => handleNavigation(e, '/')}>Home</Link></li>
+                <li><Link to="/#about" onClick={(e) => handleNavigation(e, '/#about')}>About Us</Link></li>
+                <li><Link to="/#services" onClick={(e) => handleNavigation(e, '/#services')}>Our Services</Link></li>
+                <li><Link to="/contact" onClick={(e) => handleNavigation(e, '/contact')}>Contact</Link></li>
               </ul>
             </div>
 
@@ -369,7 +402,7 @@ const App: React.FC = () => {
             </div>
           </div>
         </footer>
-      </div>
+    </div>
     </Router>
   );
 };
