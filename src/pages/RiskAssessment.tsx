@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import riskAssessmentImage from '../assets/risk-assessment.jpg';
+import riskAssessmentImage from '../assets/optimized/risk-assessment.jpg';
 
 const RiskAssessment: React.FC = () => {
   useEffect(() => {
@@ -79,7 +79,7 @@ const RiskAssessment: React.FC = () => {
         <section className="service-cta">
           <h2>Ready for a Comprehensive Security Assessment?</h2>
           <p>Contact us to schedule your risk assessment consultation.</p>
-          <Link to="/contact" className="cta-button">Get in Touch</Link>
+          <Link to="/#contact" className="cta-button">Get in Touch</Link>
         </section>
       </div>
     </div>

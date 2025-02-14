@@ -4,6 +4,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const CopyPlugin = require('copy-webpack-plugin');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
+const publicPath = '/';
 
 module.exports = {
   mode: isDevelopment ? 'development' : 'production',
@@ -11,7 +12,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: isDevelopment ? '/' : '/website/',
+    publicPath: publicPath,
     clean: true
   },
   module: {
@@ -40,12 +41,10 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/i,
-        type: 'asset',
-        parser: {
-          dataUrlCondition: {
-            maxSize: 8 * 1024 // 8kb
-          }
+        test: /\.(png|jpg|jpeg|gif|svg|ico)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext]'
         }
       }
     ],
@@ -62,6 +61,8 @@ module.exports = {
     isDevelopment && new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      publicPath: publicPath,
+      favicon: './public/favicon.ico'
     }),
     new CopyPlugin({
       patterns: [
@@ -78,7 +79,7 @@ module.exports = {
   devServer: {
     static: {
       directory: path.join(__dirname, 'public'),
-      publicPath: '/'
+      publicPath: publicPath
     },
     port: 3003,
     hot: true,

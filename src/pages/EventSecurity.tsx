@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import eventSecurityImage from '../assets/event-security.jpg';
+import eventSecurityImage from '../assets/optimized/event-security.jpg';
 
 const EventSecurity: React.FC = () => {
   useEffect(() => {
@@ -64,7 +64,7 @@ const EventSecurity: React.FC = () => {
         <section className="service-cta">
           <h2>Planning an Event?</h2>
           <p>Contact us to discuss your event security requirements.</p>
-          <Link to="/contact" className="cta-button">Get in Touch</Link>
+          <Link to="/#contact" className="cta-button">Get in Touch</Link>
         </section>
       </div>
     </div>

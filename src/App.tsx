@@ -161,18 +161,20 @@ const App: React.FC = () => {
     setFormStatus('submitting');
     
     try {
+      // Initialize EmailJS with your public key
       await emailjs.init("L_WED7EtdpQ51lFN2");
 
       const result = await emailjs.send(
-        "service_s40muhp",
-        "template_pyx1via",
+        "service_s40muhp",  // Your EmailJS service ID
+        "template_pyx1via", // Your EmailJS template ID
         {
           from_name: formData.name,
           from_email: formData.email,
           phone_number: formData.phone_number,
           message: formData.message,
           to_name: "Fortis Secured",
-        }
+        },
+        "L_WED7EtdpQ51lFN2" // Your EmailJS public key
       );
 
       if (result.text === 'OK') {
@@ -276,14 +278,22 @@ const App: React.FC = () => {
     setIsMenuOpen(false);
 
     if (path === '/') {
-      scrollToTop();
-    } else if (path.includes('#')) {
+      window.location.hash = '/';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (path.startsWith('/#')) {
       const sectionId = path.split('#')[1];
-      if (!scrollToSection(sectionId)) {
-        window.location.href = path;
+      // If we're not on the homepage, go there first
+      if (window.location.hash !== '' && window.location.hash !== '#/') {
+        window.location.hash = '/';
+        setTimeout(() => {
+          scrollToSection(sectionId);
+        }, 100);
+      } else {
+        // We're already on homepage, just scroll
+        scrollToSection(sectionId);
       }
     } else {
-      window.location.href = path;
+      window.location.hash = path;
     }
   };
 
@@ -310,7 +320,7 @@ const App: React.FC = () => {
             <Link to="/" onClick={(e) => handleNavigation(e, '/')}>HOME</Link>
             <Link to="/#about" onClick={(e) => handleNavigation(e, '/#about')}>ABOUT</Link>
             <Link to="/#services" onClick={(e) => handleNavigation(e, '/#services')}>SERVICES</Link>
-            <Link to="/contact" onClick={(e) => handleNavigation(e, '/contact')}>CONTACT</Link>
+            <Link to="/#contact" onClick={(e) => handleNavigation(e, '/#contact')}>CONTACT</Link>
           </div>
         </nav>
 
@@ -358,17 +368,17 @@ const App: React.FC = () => {
                 <li><Link to="/" onClick={(e) => handleNavigation(e, '/')}>Home</Link></li>
                 <li><Link to="/#about" onClick={(e) => handleNavigation(e, '/#about')}>About Us</Link></li>
                 <li><Link to="/#services" onClick={(e) => handleNavigation(e, '/#services')}>Our Services</Link></li>
-                <li><Link to="/contact" onClick={(e) => handleNavigation(e, '/contact')}>Contact</Link></li>
+                <li><Link to="/#contact" onClick={(e) => handleNavigation(e, '/#contact')}>Contact</Link></li>
               </ul>
             </div>
 
             <div className="footer-section">
               <h3>Services</h3>
               <ul>
-                <li><Link to="/services/door-supervision">Door Supervision</Link></li>
-                <li><Link to="/services/manned-security">Manned Security</Link></li>
-                <li><Link to="/services/event-security">Event Security</Link></li>
-                <li><Link to="/services/risk-assessment">Risk Assessment</Link></li>
+                <li><Link to="/services/door-supervision" onClick={(e) => handleNavigation(e, '/services/door-supervision')}>Door Supervision</Link></li>
+                <li><Link to="/services/manned-security" onClick={(e) => handleNavigation(e, '/services/manned-security')}>Manned Security</Link></li>
+                <li><Link to="/services/event-security" onClick={(e) => handleNavigation(e, '/services/event-security')}>Event Security</Link></li>
+                <li><Link to="/services/risk-assessment" onClick={(e) => handleNavigation(e, '/services/risk-assessment')}>Risk Assessment</Link></li>
               </ul>
             </div>
 
@@ -397,9 +407,9 @@ const App: React.FC = () => {
           <div className="footer-bottom">
             <p>&copy; {new Date().getFullYear()} Fortis Secured. All rights reserved.</p>
             <div className="footer-bottom-links">
-              <Link to="/privacy">Privacy Policy</Link>
-              <Link to="/terms">Terms of Service</Link>
-              <Link to="/cookies">Cookie Policy</Link>
+              <Link to="/privacy" onClick={(e) => handleNavigation(e, '/privacy')}>Privacy Policy</Link>
+              <Link to="/terms" onClick={(e) => handleNavigation(e, '/terms')}>Terms of Service</Link>
+              <Link to="/cookies" onClick={(e) => handleNavigation(e, '/cookies')}>Cookie Policy</Link>
             </div>
           </div>
         </footer>

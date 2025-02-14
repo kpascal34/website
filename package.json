@@ -1,14 +1,15 @@
 {
   "name": "client",
   "version": "1.0.0",
-  "homepage": "https://fortissecured.github.io/website",
+  "homepage": "https://www.fortissecured.co.uk",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "optimize-images": "node scripts/optimize-images.js"
   },
   "keywords": [],
   "author": "",
@@ -39,6 +40,7 @@
     "postcss-loader": "^7.0.2",
     "postcss-preset-env": "^8.0.1",
     "react-refresh": "^0.14.0",
+    "sharp": "^0.33.5",
     "source-map-loader": "^4.0.1",
     "style-loader": "^3.3.1",
     "webpack": "^5.75.0",

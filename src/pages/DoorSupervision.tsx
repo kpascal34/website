@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import doorSupervisionImage from '../assets/door-supervision.jpg';
+import doorSupervisionImage from '../assets/optimized/door-supervision.jpg';
 
 const DoorSupervision: React.FC = () => {
   useEffect(() => {
@@ -59,7 +59,7 @@ const DoorSupervision: React.FC = () => {
         <section className="service-cta">
           <h2>Ready to Enhance Your Venue Security?</h2>
           <p>Contact us today to discuss your door supervision requirements.</p>
-          <a href="/contact" className="cta-button">Contact Us</a>
+          <Link to="/#contact" className="cta-button">Contact Us</Link>
         </section>
       </div>
     </div>

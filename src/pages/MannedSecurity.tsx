@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import mannedGuardingImage from '../assets/manned-guarding.jpg';
+import mannedGuardingImage from '../assets/optimized/manned-guarding.jpg';
 
 const MannedSecurity: React.FC = () => {
   useEffect(() => {
@@ -68,7 +68,7 @@ const MannedSecurity: React.FC = () => {
         <section className="service-cta">
           <h2>Ready to Enhance Your Security?</h2>
           <p>Contact us to discuss your manned guarding requirements.</p>
-          <Link to="/contact" className="cta-button">Get in Touch</Link>
+          <Link to="/#contact" className="cta-button">Get in Touch</Link>
         </section>
       </div>
     </div>
