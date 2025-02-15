@@ -1,0 +1,241 @@
+.benefits-page {
+  min-height: 100vh;
+  background-color: var(--background-primary);
+}
+
+.benefits-hero {
+  position: relative;
+  background: linear-gradient(rgba(61, 91, 110, 0.9), rgba(61, 91, 110, 0.8)),
+              url('/images/hero-2.jpg') center/cover no-repeat;
+  padding: 8rem 2rem 4rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+.benefits-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.benefits-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.benefits-hero p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.benefits-overview {
+  padding: 4rem 2rem;
+  background-color: var(--background-primary);
+}
+
+.benefits-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.benefit-card {
+  background-color: var(--card-background);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px var(--shadow-color);
+}
+
+.benefit-card h2 {
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.benefit-card h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+
+.benefit-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.benefit-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefit-points li {
+  color: var(--text-primary);
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.benefit-points li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.benefits-cta {
+  background-color: var(--background-secondary);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.cta-button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.cta-button.primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: 2px solid var(--primary-color);
+}
+
+.cta-button.primary:hover {
+  background-color: transparent;
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--text-primary);
+}
+
+.cta-button.secondary:hover {
+  background-color: var(--text-primary);
+  color: var(--background-primary);
+  transform: translateY(-2px);
+}
+
+/* Dark mode styles */
+[data-theme="dark"] .benefit-card {
+  background-color: var(--card-background);
+}
+
+[data-theme="dark"] .benefits-cta {
+  background-color: var(--background-secondary);
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .benefits-hero {
+    padding: 6rem 1rem 3rem;
+  }
+
+  .benefits-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .benefits-hero p {
+    font-size: 1.1rem;
+  }
+
+  .benefits-overview {
+    padding: 3rem 1rem;
+  }
+
+  .benefits-container {
+    grid-template-columns: 1fr;
+  }
+
+  .benefit-card h2 {
+    font-size: 1.6rem;
+  }
+
+  .benefit-description {
+    font-size: 1rem;
+  }
+
+  .benefits-cta {
+    padding: 3rem 1rem;
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+  }
+
+  .cta-content p {
+    font-size: 1.1rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+}
+
+/* High contrast mode */
+@media (forced-colors: active) {
+  .benefit-card {
+    border: 2px solid ButtonText;
+  }
+
+  .benefit-points li::before {
+    forced-color-adjust: none;
+  }
+
+  .cta-button {
+    border: 2px solid ButtonText;
+  }
+} 

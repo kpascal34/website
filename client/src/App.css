@@ -1,21 +1,22 @@
 :root {
   /* Light Mode Colors (Default) */
   --background-primary: #ffffff;
-  --background-secondary: #f8f9fa;
+  --background-secondary: #f5f5f5;
   --text-primary: #333333;
   --text-secondary: #666666;
   --primary-color: #57ADCF;
   --secondary-color: #3D5B6E;
-  --accent-color: #FFD700;
-  --border-color: #3D5B6E;
+  --accent-color: #007bff;
+  --accent-hover: #0056b3;
+  --border-color: #e0e0e0;
   --surface: #FFFFFF;
-  --hover-background: #f0f0f0;
+  --hover-background: rgba(0, 123, 255, 0.1);
   --button-text: #FFFFFF;
   --link-color: #3D5B6E;
   --link-hover: #57ADCF;
-  --error: #D32F2F;
-  --success: #2E7D32;
-  --warning: #F1C40F;
+  --error: #dc3545;
+  --success: #28a745;
+  --warning: #ffc107;
   --focus-ring: rgba(61, 91, 110, 0.4);
   --overlay: rgba(0, 0, 0, 0.1);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -62,33 +63,25 @@
   --success-color: #28a745;
 
   --card-background: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"] {
-  --primary-brand: #57ADCF;
-  --secondary-brand: #3D5B6E;
-  --background: #1A2A35;
-  --surface: #2E4353;
-  --text-primary: #333333;
-  --text-secondary: #666666;
-  --accent-1: #FFA726;
-  --accent-2: #FFEE58;
-  --success: #81C784;
-  --error: #EF5350;
-  --warning: #FFCA28;
-  --background-primary: #E0E0E0;
-  --text-primary: #E0E0E0;
-  --primary-color: #57ADCF;
-  --secondary-color: #3D5B6E;
-  --accent-color: #FFD700;
-  --border-color: #3D5B6E;
-  --shadow-color: rgba(0, 0, 0, 0.15);
-  --success-color: #4CAF50;
-  --warning-color: #FFD700;
-  --error-color: #FF6B6B;
-  --focus-ring: rgba(87, 173, 207, 0.4);
-
-  --card-background: #E0E0E0;
+  /* Dark theme - 2025 trend colors */
+  --background-primary: #0A1A2F;      /* Primary dark blue - 60% */
+  --background-secondary: #1C2C3F;    /* Slightly lighter blue for sections */
+  --card-background: #1E2A3A;         /* Card and component backgrounds - 30% */
+  --text-primary: #FFFFFF;            /* Pure white for main text */
+  --text-secondary: #E0E6ED;         /* Slightly muted white for secondary text */
+  --accent-color: #3D5B6E;           /* Main accent color - 10% */
+  --accent-hover: #4B6F87;           /* Lighter accent for hover states */
+  --border-color: #2A3B4D;           /* Subtle borders */
+  --shadow-color: rgba(0, 0, 0, 0.25);
+  --error: #FF4D4D;                  /* Bright red for errors */
+  --success: #4CAF50;                /* Vibrant green for success */
+  --warning: #FFB74D;                /* Orange for warnings */
+  --focus-outline: #3D5B6E;          /* Accent color for focus states */
+  --hover-background: rgba(61, 91, 110, 0.15); /* Subtle hover effect */
 }
 
 /* Smooth transitions for theme switching */
@@ -112,12 +105,13 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 5%;
-  background-color: rgba(42, 53, 70, 0.25);
+  background-color: var(--background-primary);
   position: fixed;
   width: 90%;
   top: 0;
   z-index: 1000;
   backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .logo {
@@ -146,7 +140,7 @@ body {
 }
 
 .nav-links a {
-  color: #ffffff;
+  color: var(--text-primary);
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
@@ -402,20 +396,21 @@ body {
 }
 
 .service-card {
-  background: var(--light-gray);
+  background-color: var(--card-background);
   padding: 2rem;
   border-radius: 10px;
   text-align: center;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--shadow-color);
   opacity: 1;
   transform: translateY(0);
   animation: slideInUp 0.5s ease-out forwards;
+  border: 1px solid var(--border-color);
 }
 
 .service-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px var(--shadow-color);
 }
 
 .service-icon {
@@ -980,12 +975,12 @@ html {
 }
 
 .testimonial-card {
-  background: var(--card-background);
+  background-color: var(--card-background);
   color: #333333;
   padding: 2.5rem;
   border-radius: 12px;
   position: relative;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   min-height: 200px;
   display: flex;
   flex-direction: column;
@@ -1268,10 +1263,10 @@ section.visible {
 .form-group textarea {
   width: 100%;
   padding: 0.8rem;
-  background: #ffffff;
-  border: 2px solid #cccccc;
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
-  color: #333333;
+  color: var(--text-primary);
   font-size: 1rem;
   transition: all 0.3s ease;
   box-sizing: border-box;
@@ -1286,7 +1281,7 @@ section.visible {
 
 .form-group input:focus,
 .form-group textarea:focus {
-  outline: 3px solid var(--primary-color);
+  outline: 3px solid var(--accent-color);
   outline-offset: 2px;
   border-color: var(--accent-color);
   background: rgba(255, 255, 255, 0.15);
@@ -1381,8 +1376,8 @@ section.visible {
 
 /* Footer Styles */
 .footer {
-  background-color: var(--secondary-color);
-  color: var(--text-color);
+  background-color: var(--background-secondary);
+  color: var(--text-primary);
   padding: 4rem 10% 2rem;
   margin-top: 4rem;
 }
@@ -1412,7 +1407,7 @@ section.visible {
 }
 
 .footer-section ul li a {
-  color: var(--text-color);
+  color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -1427,7 +1422,7 @@ section.visible {
 }
 
 .social-links a {
-  color: var(--text-color);
+  color: var(--text-secondary);
   transition: color 0.3s ease;
 }
 
@@ -1514,7 +1509,7 @@ section.visible {
 }
 
 .services .social-links a {
-  color: var(--text-color);
+  color: var(--text-secondary);
   transition: color 0.3s ease, transform 0.3s ease;
   display: flex;
   align-items: center;
@@ -1781,25 +1776,27 @@ body {
 
 /* Button styles */
 .cta-button.primary {
-  background-color: var(--primary-color);
-  color: var(--button-text);
-  border: none;
-  transition: background-color 0.3s ease;
+  background-color: var(--accent-color);
+  color: var(--text-primary);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
 }
 
 .cta-button.primary:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .cta-button.secondary {
   background-color: transparent;
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
+  color: var(--text-primary);
+  border: 2px solid var(--accent-color);
 }
 
 .cta-button.secondary:hover {
-  background-color: var(--primary-color);
-  color: var(--button-text);
+  background-color: var(--accent-color);
+  color: var(--text-primary);
 }
 
 /* Link styles */

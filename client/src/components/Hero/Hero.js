@@ -11,21 +11,33 @@ const Hero = () => {
   const slides = [
     {
       image: '/images/hero.jpg',
-      title: 'Professional Security Solutions',
-      subtitle: 'Protecting What Matters Most',
-      description: 'Expert security services in Yorkshire and Greater Manchester'
+      title: 'Professional Physical Security Solutions',
+      subtitle: 'Your Trusted Security Partner',
+      description: 'Comprehensive security services delivered by SIA licensed professionals in Yorkshire and Greater Manchester',
+      cta: {
+        primary: { text: 'Get Free Consultation', link: '/contact' },
+        secondary: { text: 'View Services', link: '/#services' }
+      }
     },
     {
       image: '/images/hero-2.jpg',
-      title: 'Comprehensive Protection',
-      subtitle: 'SIA Licensed Security Personnel',
-      description: 'Door supervision, manned security, and event protection'
+      title: 'Door Supervision & Manned Security',
+      subtitle: 'Expert Protection Services',
+      description: 'Professional door supervision and static guarding services for venues, events, and commercial properties',
+      cta: {
+        primary: { text: 'Discuss Your Needs', link: '/contact' },
+        secondary: { text: 'Learn More', link: '/services/door-supervision' }
+      }
     },
     {
       image: '/images/hero-3.jpg',
-      title: 'Risk Assessment Services',
-      subtitle: 'Proactive Security Planning',
-      description: 'Custom security solutions for your business'
+      title: 'Event Security & Risk Assessment',
+      subtitle: 'Comprehensive Event Protection',
+      description: 'Full-service event security and detailed risk assessments to ensure safety at every level',
+      cta: {
+        primary: { text: 'Plan Your Event', link: '/contact' },
+        secondary: { text: 'Our Approach', link: '/services/event-security' }
+      }
     }
   ];
 
@@ -43,7 +55,7 @@ const Hero = () => {
     // Auto-advance slides
     const interval = setInterval(() => {
       setCurrentSlide(current => (current + 1) % slides.length);
-    }, 5000);
+    }, 7000); // Increased duration for better readability
 
     return () => clearInterval(interval);
   }, []);
@@ -90,22 +102,40 @@ const Hero = () => {
         </div>
 
         <div className="cta-group">
-          <Link to="/contact" className="cta-button primary">
-            Get Free Consultation
+          <Link 
+            to={slides[currentSlide].cta.primary.link} 
+            className="cta-button primary"
+            onClick={(e) => {
+              if (slides[currentSlide].cta.primary.link.startsWith('/#')) {
+                e.preventDefault();
+                document.querySelector(slides[currentSlide].cta.primary.link.substring(1))?.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            {slides[currentSlide].cta.primary.text}
           </Link>
-          <Link to="/services" className="cta-button secondary">
-            Our Services
+          <Link 
+            to={slides[currentSlide].cta.secondary.link}
+            className="cta-button secondary"
+            onClick={(e) => {
+              if (slides[currentSlide].cta.secondary.link.startsWith('/#')) {
+                e.preventDefault();
+                document.querySelector(slides[currentSlide].cta.secondary.link.substring(1))?.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            {slides[currentSlide].cta.secondary.text}
           </Link>
         </div>
 
         <div className="hero-social-links">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">
+          <a href="https://www.facebook.com/Fortissecured" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">
             <FaFacebookF />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn page">
+          <a href="https://www.linkedin.com/company/fortis-security-group" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn page">
             <FaLinkedinIn />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram page">
+          <a href="https://www.instagram.com/fortis_security_/" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram page">
             <FaInstagram />
           </a>
         </div>

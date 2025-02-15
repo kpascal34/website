@@ -1,15 +1,15 @@
 :root {
   --color-deep-teal: #3D5B6E;
-  --color-sky-blue: #57ADCF;
+  --color-sky-blue: #2B6CB0;
   --color-white: #FFFFFF;
-  --color-dark-charcoal: #2E2E2E;
-  --color-light-gray: #F5F5F5;
-  --color-warm-orange: #E67E22;
-  --color-burnt-orange: #D35400;
-  --color-golden-yellow: #FFD700;
-  --color-error: #D32F2F;
-  --color-success: #2E7D32;
-  --color-warning: #F1C40F;
+  --color-dark-charcoal: #1A202C;
+  --color-light-gray: #F5F7FA;
+  --color-warm-orange: #ED8936;
+  --color-burnt-orange: #DD6B20;
+  --color-golden-yellow: #ECC94B;
+  --color-error: #F56565;
+  --color-success: #48BB78;
+  --color-warning: #ECC94B;
 }
 
 .hero {
@@ -17,7 +17,7 @@
   height: 100vh;
   min-height: 600px;
   overflow: hidden;
-  background-color: var(--background-primary);
+  background-color: var(--color-white);
 }
 
 .hero-background {
@@ -27,7 +27,7 @@
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 1s ease-in-out;
   z-index: 1;
 }
 
@@ -49,23 +49,25 @@
   height: 100%;
   background: linear-gradient(
     to bottom,
-    rgba(42, 53, 70, 0.8),
-    rgba(42, 53, 70, 0.7)
+    rgba(61, 91, 110, 0.9),
+    rgba(43, 108, 176, 0.8)
   );
   z-index: 2;
 }
 
 .hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-  z-index: 10;
-  width: 100%;
+  position: relative;
+  z-index: 3;
   max-width: 1200px;
+  margin: 0 auto;
   padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--color-white);
 }
 
 .hero-logo {
@@ -73,150 +75,159 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 8px;
-  backdrop-filter: blur(8px);
 }
 
 .hero-logo img {
   width: 120px;
   height: 120px;
+  object-fit: contain;
   margin-bottom: 1rem;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
 .hero-logo h1 {
   font-size: 2.5rem;
   font-weight: 700;
   margin: 0;
-  color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .slide-content {
-  margin-bottom: 2rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 8px;
-  backdrop-filter: blur(8px);
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideInUp 0.8s forwards;
 }
 
 .slide-content h2 {
   font-size: 3rem;
   font-weight: 700;
   margin: 0 0 1rem;
-  color: white;
+  line-height: 1.2;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .slide-content h3 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 0 0 1rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin: 0 0 1.5rem;
   color: var(--accent-color);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .slide-content p {
-  font-size: 1.25rem;
-  margin: 0;
-  color: white;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 0 0 2rem;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .cta-group {
   display: flex;
   gap: 1.5rem;
-  justify-content: center;
-  margin-bottom: 2rem;
+  margin-top: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideInUp 0.8s 0.3s forwards;
 }
 
 .cta-button {
   padding: 1rem 2rem;
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  border-radius: 4px;
   text-decoration: none;
+  border-radius: 50px;
   transition: all 0.3s ease;
-  min-width: 200px;
   text-shadow: none;
 }
 
 .cta-button.primary {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
+  background-color: var(--color-deep-teal);
+  color: var(--color-white);
+  border: 2px solid transparent;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .cta-button.primary:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--color-sky-blue);
   transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .cta-button.secondary {
   background-color: transparent;
-  color: white;
-  border: 2px solid white;
+  color: var(--color-white);
+  border: 2px solid var(--color-white);
 }
 
 .cta-button.secondary:hover {
-  background-color: white;
-  color: var(--primary-color);
+  background-color: var(--color-white);
+  color: var(--color-deep-teal);
   transform: translateY(-2px);
 }
 
 .hero-social-links {
   position: absolute;
   bottom: 2rem;
-  right: 2rem;
   display: flex;
-  gap: 1rem;
-  z-index: 10;
+  gap: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideInUp 0.8s 0.6s forwards;
 }
 
 .hero-social-links a {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--color-white);
   transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .hero-social-links a:hover {
-  background-color: white;
-  color: var(--primary-color);
-  transform: translateY(-2px);
+  background-color: var(--color-deep-teal);
+  color: var(--color-white);
+  border-color: var(--color-deep-teal);
 }
 
 .slide-indicators {
   position: absolute;
   bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 2rem;
   display: flex;
-  gap: 0.5rem;
-  z-index: 10;
+  gap: 0.75rem;
 }
 
 .slide-indicator {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
-  border: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .slide-indicator.active {
-  background-color: white;
-  transform: scale(1.2);
+  background-color: var(--color-deep-teal);
+  border-color: var(--color-deep-teal);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .sr-only {
@@ -246,16 +257,12 @@
     font-size: 2rem;
   }
 
-  .slide-content {
-    padding: 1.5rem;
-  }
-
   .slide-content h2 {
     font-size: 2rem;
   }
 
   .slide-content h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .slide-content p {
@@ -264,27 +271,21 @@
 
   .cta-group {
     flex-direction: column;
-    align-items: center;
     gap: 1rem;
   }
 
   .cta-button {
-    min-width: 180px;
-    padding: 0.875rem 1.5rem;
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
   }
 
   .hero-social-links {
-    bottom: 1rem;
-    right: 1rem;
-  }
-
-  .hero-social-links a {
-    width: 36px;
-    height: 36px;
+    bottom: 5rem;
   }
 
   .slide-indicators {
     bottom: 1rem;
+    right: 1rem;
   }
 }
 
@@ -317,12 +318,15 @@
 }
 
 [data-theme="dark"] .hero-overlay {
-  background: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 26, 47, 0.85),
+    rgba(10, 26, 47, 0.75)
+  );
 }
 
 [data-theme="dark"] .hero-content {
-  color: #ffffff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: var(--text-primary);
 }
 
 [data-theme="dark"] .hero-logo {
@@ -331,6 +335,7 @@
 
 [data-theme="dark"] .hero-logo h1 {
   color: var(--text-primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .slide-content {
@@ -339,41 +344,50 @@
 
 [data-theme="dark"] .slide-content h2 {
   color: var(--text-primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .slide-content h3 {
-  color: var(--accent-color);
+  color: var(--text-secondary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .slide-content p {
-  color: var(--text-primary);
+  color: var(--text-secondary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .cta-button {
-  background-color: var(--primary-color);
-  color: #333333;
-  border: 2px solid var(--border-color);
+  background-color: var(--accent-color);
+  color: var(--text-primary);
+  border: 2px solid transparent;
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 [data-theme="dark"] .cta-button:hover {
-  background-color: var(--hover-background);
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--shadow-color);
 }
 
 [data-theme="dark"] .hero-social-links a {
-  color: #E0E0E0;
-  background-color: rgba(61, 91, 110, 0.8);
+  color: var(--text-secondary);
+  background-color: rgba(61, 91, 110, 0.2);
 }
 
 [data-theme="dark"] .hero-social-links a:hover {
-  background-color: var(--primary-color);
+  color: var(--text-primary);
+  background-color: var(--accent-color);
 }
 
 [data-theme="dark"] .slide-indicator {
-  background-color: rgba(224, 224, 224, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 2px solid transparent;
 }
 
 [data-theme="dark"] .slide-indicator.active {
-  background-color: var(--primary-color);
+  background-color: var(--text-primary);
+  border-color: var(--accent-color);
 }
 
 /* Dark mode focus states */

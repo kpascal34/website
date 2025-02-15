@@ -1,0 +1,16 @@
+/* Custom styles for Tawk.to widget */
+#tawk-bubble-container {
+  z-index: 1000 !important;
+}
+
+/* Ensure the widget is more visible in dark mode */
+[data-theme="dark"] #tawk-bubble-container {
+  opacity: 0.9;
+}
+
+/* Adjust widget position on mobile */
+@media (max-width: 768px) {
+  #tawk-bubble-container {
+    bottom: 65px !important; /* Adjust if you have a bottom navigation bar */
+  }
+} 

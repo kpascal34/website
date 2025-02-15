@@ -15,6 +15,7 @@ import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
 import FloatingContact from './components/FloatingContact/FloatingContact';
 import ThemeToggle from './components/ThemeToggle/ThemeToggle';
+import LiveChat from './components/LiveChat/LiveChat';
 
 interface FormData {
   name: string;
@@ -418,6 +419,7 @@ const App: React.FC = () => {
             </div>
           </div>
         </footer>
+        <LiveChat />
       </div>
     </Router>
   );
