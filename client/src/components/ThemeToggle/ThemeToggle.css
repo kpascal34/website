@@ -4,9 +4,9 @@
   right: 20px;
   width: 48px;
   height: 48px;
-  background-color: var(--background);
-  color: var(--text);
-  border: 2px solid var(--border);
+  background-color: var(--card-background);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -14,24 +14,24 @@
   justify-content: center;
   transition: all 0.3s ease;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .theme-toggle:hover {
   transform: scale(1.1);
-  background-color: var(--secondary-brand);
-  color: var(--background);
+  background-color: var(--hover-background);
+  border-color: var(--primary-color);
 }
 
 .theme-toggle:focus-visible {
-  outline: 2px solid var(--accent-2);
+  outline: 2px solid var(--accent-color);
   outline-offset: 2px;
 }
 
 .theme-toggle svg {
   width: 24px;
   height: 24px;
-  transition: transform var(--transition-speed) ease;
+  transition: transform 0.3s ease;
 }
 
 .theme-toggle:hover svg {
@@ -39,18 +39,19 @@
 }
 
 .sun-icon {
-  color: var(--accent-2);
+  color: var(--accent-color);
 }
 
 .moon-icon {
-  color: var(--primary-brand);
+  color: var(--primary-color);
 }
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .theme-toggle {
-    top: 0.5rem;
-    right: 0.5rem;
+    top: auto;
+    bottom: 20px;
+    right: 20px;
     width: 40px;
     height: 40px;
   }

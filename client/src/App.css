@@ -67,13 +67,24 @@
   --secondary-brand: #3D5B6E;
   --background: #1A2A35;
   --surface: #2E4353;
-  --text-primary: #FFFFFF;
+  --text-primary: #E0E0E0;
   --text-secondary: #B0BEC5;
   --accent-1: #FFA726;
   --accent-2: #FFEE58;
   --success: #81C784;
   --error: #EF5350;
   --warning: #FFCA28;
+  --background-primary: #1E1E1E;
+  --text-primary: #E0E0E0;
+  --primary-color: #57ADCF;
+  --secondary-color: #3D5B6E;
+  --accent-color: #FFD700;
+  --border-color: #333333;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --success-color: #4CAF50;
+  --warning-color: #FFD700;
+  --error-color: #FF6B6B;
+  --focus-ring: rgba(87, 173, 207, 0.4);
 }
 
 /* Smooth transitions for theme switching */
@@ -1830,4 +1841,42 @@ a:hover {
 /* Hover effects */
 .interactive:hover {
   background-color: var(--hover-background);
+}
+
+/* Dark mode specific overrides */
+[data-theme="dark"] .hero-overlay {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] .hero-content {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .cta-button {
+  background-color: var(--primary-color);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+[data-theme="dark"] .cta-button:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--primary-color);
+}
+
+[data-theme="dark"] .hero-social-links a {
+  background-color: rgba(30, 30, 30, 0.8);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .hero-social-links a:hover {
+  background-color: var(--primary-color);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .slide-indicator {
+  background-color: rgba(224, 224, 224, 0.3);
+}
+
+[data-theme="dark"] .slide-indicator.active {
+  background-color: var(--accent-color);
 }
