@@ -1,5 +1,5 @@
 .nav {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.85);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   padding: 1rem;
   position: fixed;
@@ -9,6 +9,7 @@
   z-index: 1000;
   border-bottom: 1px solid var(--color-light-gray);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .nav-container {
@@ -96,11 +97,13 @@
     top: 100%;
     left: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.98);
+    background-color: rgba(255, 255, 255, 0.95);
     padding: 1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     flex-direction: column;
     gap: 1rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   .nav-menu.active {
@@ -130,9 +133,11 @@
 }
 
 [data-theme="dark"] .nav {
-  background-color: var(--background-primary);
+  background-color: rgba(18, 18, 18, 0.85);
   border-bottom: 1px solid var(--border-color);
   box-shadow: 0 4px 12px var(--shadow-color);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 [data-theme="dark"] .nav-logo span {
@@ -160,7 +165,9 @@
 /* Mobile Navigation Dark Theme */
 @media (max-width: 768px) {
   [data-theme="dark"] .nav-menu {
-    background-color: var(--background-primary);
+    background-color: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid var(--border-color);
     box-shadow: 0 4px 12px var(--shadow-color);
   }
