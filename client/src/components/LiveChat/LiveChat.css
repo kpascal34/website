@@ -5,12 +5,26 @@
   right: auto !important;
 }
 
+/* Position the minimized chat container on the left */
 .tawk-min-container {
   left: 20px !important;
   right: auto !important;
 }
 
-.tawk-card {
+/* Position the chat iframe on the left */
+.tawk-iframe-container {
+  left: 20px !important;
+  right: auto !important;
+}
+
+/* Position the chat popup on the left */
+#tawkchat-container {
+  left: 20px !important;
+  right: auto !important;
+}
+
+/* Position the chat message box on the left */
+#tawkchat-message-container {
   left: 20px !important;
   right: auto !important;
 }
@@ -22,16 +36,12 @@
 
 /* Adjust widget position on mobile */
 @media (max-width: 768px) {
-  #tawk-bubble-container {
-    bottom: 65px !important; /* Adjust if you have a bottom navigation bar */
-    left: 10px !important;
-  }
-  
-  .tawk-min-container {
-    left: 10px !important;
-  }
-  
-  .tawk-card {
+  #tawk-bubble-container,
+  .tawk-min-container,
+  .tawk-iframe-container,
+  #tawkchat-container,
+  #tawkchat-message-container {
+    bottom: 65px !important;
     left: 10px !important;
   }
 } 
