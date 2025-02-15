@@ -1,20 +1,20 @@
 .theme-toggle {
   position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 1100;
-  width: 44px;
-  height: 44px;
+  top: 100px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  background-color: var(--background);
+  color: var(--text);
+  border: 2px solid var(--border);
   border-radius: 50%;
-  border: none;
-  background-color: var(--surface);
-  color: var(--text-primary);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all var(--transition-speed) ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .theme-toggle:hover {

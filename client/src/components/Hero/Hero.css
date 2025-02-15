@@ -60,123 +60,87 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 3;
+  text-align: center;
+  color: white;
+  z-index: 10;
   width: 100%;
   max-width: 1200px;
   padding: 2rem;
-  color: var(--color-white);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .hero-logo {
   margin-bottom: 2rem;
-  padding: 1.5rem;
-  border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(61, 91, 110, 0.3);
-  backdrop-filter: blur(8px);
 }
 
 .hero-logo img {
   width: 120px;
   height: 120px;
   margin-bottom: 1rem;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
 }
 
 .hero-logo h1 {
   font-size: 2.5rem;
   font-weight: 700;
   margin: 0;
-  color: var(--color-white);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .slide-content {
-  margin: 2rem 0;
-  padding: 2rem;
-  border-radius: 8px;
-  background-color: rgba(61, 91, 110, 0.3);
-  backdrop-filter: blur(8px);
-  max-width: 800px;
+  margin-bottom: 2rem;
 }
 
 .slide-content h2 {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 700;
   margin: 0 0 1rem;
-  color: var(--color-white);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .slide-content h3 {
   font-size: 2rem;
   font-weight: 600;
   margin: 0 0 1rem;
-  color: var(--color-golden-yellow);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .slide-content p {
   font-size: 1.25rem;
-  margin: 0 auto;
-  max-width: 800px;
-  color: var(--color-white);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-  line-height: 1.6;
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .cta-group {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   justify-content: center;
-  margin-top: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .cta-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   padding: 1rem 2rem;
   font-size: 1.125rem;
   font-weight: 600;
-  text-decoration: none;
   border-radius: 4px;
+  text-decoration: none;
   transition: all 0.3s ease;
-  min-width: 200px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .cta-button.primary {
-  background-color: var(--color-burnt-orange);
-  color: var(--color-white);
-  border: 2px solid var(--color-burnt-orange);
-}
-
-.cta-button.primary:hover,
-.cta-button.primary:focus {
-  background-color: var(--color-warm-orange);
-  border-color: var(--color-warm-orange);
-  transform: translateY(-2px);
+  background-color: var(--primary-color, #007bff);
+  color: white;
 }
 
 .cta-button.secondary {
   background-color: transparent;
-  color: var(--color-white);
-  border: 2px solid var(--color-white);
-}
-
-.cta-button.secondary:hover,
-.cta-button.secondary:focus {
-  background-color: var(--color-white);
-  color: var(--color-deep-teal);
-  transform: translateY(-2px);
+  color: white;
+  border: 2px solid white;
 }
 
 .hero-social-links {
@@ -185,32 +149,24 @@
   right: 2rem;
   display: flex;
   gap: 1rem;
-  z-index: 4;
 }
 
 .hero-social-links a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(61, 91, 110, 0.6);
-  border-radius: 50%;
+  color: white;
   transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.hero-social-links a:hover,
-.hero-social-links a:focus {
-  background-color: var(--color-burnt-orange);
+.hero-social-links a:hover {
+  background-color: white;
+  color: var(--primary-color, #007bff);
   transform: translateY(-2px);
-}
-
-.hero-social-links svg {
-  width: 20px;
-  height: 20px;
-  fill: var(--color-white);
 }
 
 .slide-indicators {
@@ -219,28 +175,21 @@
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 0.75rem;
-  z-index: 4;
-  background-color: rgba(61, 91, 110, 0.3);
-  padding: 0.5rem;
-  border-radius: 2rem;
-  backdrop-filter: blur(4px);
+  gap: 0.5rem;
 }
 
 .slide-indicator {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.3);
-  border: 2px solid var(--color-white);
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  padding: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .slide-indicator.active {
-  background-color: var(--color-white);
+  background-color: white;
   transform: scale(1.2);
 }
 
