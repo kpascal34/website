@@ -1,8 +1,8 @@
 .service-page {
   min-height: 100vh;
   padding-top: 80px;
-  background-color: var(--primary-color);
-  color: var(--text-color);
+  background-color: var(--background-color);
+  color: var(--text-primary);
 }
 
 .service-hero {
@@ -15,6 +15,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: var(--background-secondary);
 }
 
 .service-hero h1 {
@@ -22,7 +23,8 @@
   margin-bottom: 1rem;
   font-weight: 700;
   letter-spacing: 2px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: var(--text-primary);
+  text-shadow: 2px 2px 4px var(--shadow-color);
   position: relative;
   z-index: 1;
 }
@@ -31,8 +33,8 @@
   font-size: 1.5rem;
   max-width: 800px;
   margin: 0 auto;
-  color: #cccccc;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  color: var(--text-secondary);
+  text-shadow: 1px 1px 2px var(--shadow-color);
   position: relative;
   z-index: 1;
 }
@@ -41,6 +43,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 4rem 5%;
+  background-color: var(--background-color);
 }
 
 .service-content section {
@@ -56,13 +59,13 @@
 .service-overview h2 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
-  color: var(--accent-color);
+  color: var(--color-deep-teal);
 }
 
 .service-overview p {
   font-size: 1.2rem;
   line-height: 1.8;
-  color: #cccccc;
+  color: var(--text-secondary);
 }
 
 .features-grid {
@@ -80,37 +83,40 @@
 }
 
 .feature-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--card-background);
   padding: 2rem;
   border-radius: 10px;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px var(--shadow-color);
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 6px 12px var(--shadow-color);
 }
 
 .feature-card h3 {
-  color: var(--accent-color);
+  color: var(--color-deep-teal);
   font-size: 1.3rem;
   margin-bottom: 1rem;
 }
 
 .feature-card p {
-  color: #cccccc;
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
 .service-benefits {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--card-background);
   padding: 3rem;
   border-radius: 10px;
+  box-shadow: 0 4px 6px var(--shadow-color);
 }
 
 .service-benefits h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: var(--accent-color);
+  color: var(--color-deep-teal);
   text-align: center;
 }
 
@@ -123,7 +129,7 @@
 }
 
 .service-benefits li {
-  color: #cccccc;
+  color: var(--text-secondary);
   font-size: 1.1rem;
   padding-left: 1.5rem;
   position: relative;
@@ -133,26 +139,27 @@
   content: "✓";
   position: absolute;
   left: 0;
-  color: var(--accent-color);
+  color: var(--color-sky-blue);
 }
 
 .service-cta {
   text-align: center;
   padding: 4rem 0;
-  background: linear-gradient(rgba(87, 173, 207, 0.1), rgba(87, 173, 207, 0.05));
+  background: var(--background-gradient);
   border-radius: 10px;
+  margin-top: 4rem;
 }
 
 .service-cta h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: var(--accent-color);
+  color: var(--color-deep-teal);
 }
 
 .service-cta p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
-  color: #cccccc;
+  color: var(--text-secondary);
 }
 
 .service-cta .cta-button {
@@ -160,8 +167,8 @@
   padding: 1rem 3rem;
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--text-color);
-  background: var(--accent-color);
+  color: var(--text-on-primary);
+  background: var(--color-deep-teal);
   border: none;
   border-radius: 5px;
   text-decoration: none;
@@ -170,62 +177,99 @@
 
 .service-cta .cta-button:hover {
   transform: translateY(-2px);
-  background: #68B8D6;
+  background: var(--color-sky-blue);
 }
 
-.service-process {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 3rem;
-  border-radius: 10px;
-  margin-bottom: 4rem;
+/* Dark theme overrides */
+[data-theme="dark"] .service-page {
+  background-color: var(--dark-background);
 }
 
-.service-process h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: var(--accent-color);
-  text-align: center;
+[data-theme="dark"] .service-hero {
+  background-color: var(--dark-background-secondary);
 }
 
-.service-process p {
-  color: #cccccc;
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  text-align: center;
+[data-theme="dark"] .feature-card,
+[data-theme="dark"] .service-benefits {
+  background: var(--dark-card-background);
 }
 
-.service-process ol {
-  list-style-position: inside;
-  padding: 0;
-  counter-reset: process-counter;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+[data-theme="dark"] .service-cta {
+  background: var(--dark-background-gradient);
 }
 
-.service-process li {
-  color: #cccccc;
-  font-size: 1.1rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 8px;
-  counter-increment: process-counter;
-  display: flex;
-  align-items: center;
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .service-hero {
+    padding: 6rem 5% 4rem;
+  }
+
+  .service-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .service-hero p {
+    font-size: 1.2rem;
+  }
+
+  .service-content {
+    padding: 2rem 5%;
+  }
+
+  .service-overview h2 {
+    font-size: 2rem;
+  }
+
+  .feature-card {
+    padding: 1.5rem;
+  }
+
+  .service-benefits {
+    padding: 2rem;
+  }
+
+  .service-cta {
+    padding: 3rem 1rem;
+  }
+
+  .service-cta h2 {
+    font-size: 2rem;
+  }
 }
 
-.service-process li::before {
-  content: counter(process-counter);
-  min-width: 30px;
-  height: 30px;
-  background: var(--accent-color);
-  color: var(--primary-color);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 1rem;
-  font-weight: bold;
+/* High Contrast Mode */
+@media (forced-colors: active) {
+  .feature-card,
+  .service-benefits,
+  .service-cta {
+    border: 2px solid ButtonText;
+  }
+
+  .service-cta .cta-button {
+    border: 2px solid ButtonText;
+  }
+}
+
+/* Focus States */
+.service-cta .cta-button:focus-visible {
+  outline: 2px solid var(--color-sky-blue);
+  outline-offset: 2px;
+}
+
+/* Animation */
+.feature-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Breadcrumb Navigation */
