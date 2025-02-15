@@ -149,9 +149,9 @@ const Hero = () => {
           <button
             key={index}
             className={`slide-indicator ${currentSlide === index ? 'active' : ''}`}
+            onClick={() => handleSlideClick(index)}
             aria-label={`Go to slide ${index + 1}`}
             aria-current={currentSlide === index}
-            onClick={() => handleSlideClick(index)}
           />
         ))}
       </div>
