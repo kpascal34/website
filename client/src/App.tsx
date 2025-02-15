@@ -14,6 +14,7 @@ import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
 import FloatingContact from './components/FloatingContact/FloatingContact';
+import ThemeToggle from './components/ThemeToggle/ThemeToggle';
 
 interface FormData {
   name: string;
@@ -301,6 +302,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <div className={`App ${isDarkTheme ? 'dark' : 'light'}`}>
+        <ThemeToggle />
         <ScrollHandler />
         <nav className="navbar">
           <div className="logo">
