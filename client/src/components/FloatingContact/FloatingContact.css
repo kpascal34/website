@@ -1,7 +1,8 @@
 .floating-contact-wrapper {
   position: fixed;
   bottom: 2rem;
-  right: 2rem;
+  left: 2rem;
+  right: auto;
   z-index: 1000;
   display: flex;
   flex-direction: column-reverse;
@@ -89,7 +90,8 @@
 
 .fab-tooltip {
   position: absolute;
-  right: calc(100% + 10px);
+  left: calc(100% + 10px);
+  right: auto;
   top: 50%;
   transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.8);
@@ -111,7 +113,8 @@
 @media (max-width: 768px) {
   .floating-contact-wrapper {
     bottom: 1rem;
-    right: 1rem;
+    left: 1rem;
+    right: auto;
   }
 
   .fab-main {
