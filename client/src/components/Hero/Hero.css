@@ -17,7 +17,7 @@
   height: 100vh;
   min-height: 600px;
   overflow: hidden;
-  background-color: var(--color-deep-teal);
+  background-color: var(--background-primary);
 }
 
 .hero-background {
@@ -49,7 +49,7 @@
   height: 100%;
   background: linear-gradient(
     to bottom,
-    rgba(46, 46, 46, 0.6) 0%,
+    rgba(51, 51, 51, 0.6) 0%,
     rgba(61, 91, 110, 0.7) 100%
   );
   z-index: 2;
@@ -61,7 +61,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: white;
+  color: var(--button-text);
   z-index: 10;
   width: 100%;
   max-width: 1200px;
@@ -73,31 +73,40 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
 }
 
 .hero-logo img {
   width: 120px;
   height: 120px;
   margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
 }
 
 .hero-logo h1 {
   font-size: 2.5rem;
   font-weight: 700;
   margin: 0;
-  color: white;
+  color: var(--button-text);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .slide-content {
   margin-bottom: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
 }
 
 .slide-content h2 {
   font-size: 3rem;
   font-weight: 700;
   margin: 0 0 1rem;
-  color: white;
+  color: var(--button-text);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -105,20 +114,20 @@
   font-size: 2rem;
   font-weight: 600;
   margin: 0 0 1rem;
-  color: white;
+  color: var(--accent-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .slide-content p {
   font-size: 1.25rem;
   margin: 0;
-  color: white;
+  color: var(--button-text);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .cta-group {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
   margin-bottom: 2rem;
 }
@@ -130,17 +139,30 @@
   border-radius: 4px;
   text-decoration: none;
   transition: all 0.3s ease;
+  min-width: 200px;
 }
 
 .cta-button.primary {
-  background-color: var(--primary-color, #007bff);
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--button-text);
+  border: none;
+}
+
+.cta-button.primary:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
 }
 
 .cta-button.secondary {
   background-color: transparent;
-  color: white;
-  border: 2px solid white;
+  color: var(--button-text);
+  border: 2px solid var(--button-text);
+}
+
+.cta-button.secondary:hover {
+  background-color: var(--button-text);
+  color: var(--primary-color);
+  transform: translateY(-2px);
 }
 
 .hero-social-links {
@@ -149,6 +171,7 @@
   right: 2rem;
   display: flex;
   gap: 1rem;
+  z-index: 10;
 }
 
 .hero-social-links a {
@@ -159,13 +182,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--button-text);
   transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
 }
 
 .hero-social-links a:hover {
-  background-color: white;
-  color: var(--primary-color, #007bff);
+  background-color: var(--button-text);
+  color: var(--primary-color);
   transform: translateY(-2px);
 }
 
