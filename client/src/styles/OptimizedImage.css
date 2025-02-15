@@ -1,0 +1,60 @@
+.optimized-image-container {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.optimized-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.optimized-image.loaded {
+  opacity: 1;
+}
+
+/* Blur-up loading effect */
+.optimized-image-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0;
+  animation: pulse 1.5s infinite;
+}
+
+.optimized-image.loaded + .optimized-image-container::before {
+  display: none;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Responsive image container */
+.optimized-image-container[data-aspect-ratio] {
+  position: relative;
+  padding-bottom: calc(100% / (var(--aspect-ratio)));
+}
+
+.optimized-image-container[data-aspect-ratio] .optimized-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} 

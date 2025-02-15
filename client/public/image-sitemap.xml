@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.fortissecured.co.uk/</loc>
+    <image:image>
+      <image:loc>https://www.fortissecured.co.uk/images/logo.png</image:loc>
+      <image:title>Fortis Secured Logo</image:title>
+      <image:caption>Professional Security Services in Yorkshire and Greater Manchester</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.fortissecured.co.uk/images/hero.jpg</image:loc>
+      <image:title>Fortis Secured Hero Image</image:title>
+      <image:caption>Professional Security Services</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.fortissecured.co.uk/services/door-supervision</loc>
+    <image:image>
+      <image:loc>https://www.fortissecured.co.uk/images/door-supervision.jpg</image:loc>
+      <image:title>Door Supervision Services</image:title>
+      <image:caption>Professional Door Supervision and Venue Security</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.fortissecured.co.uk/services/manned-security</loc>
+    <image:image>
+      <image:loc>https://www.fortissecured.co.uk/images/manned-security.jpg</image:loc>
+      <image:title>Manned Security Services</image:title>
+      <image:caption>Professional Manned Guarding and Security Personnel</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.fortissecured.co.uk/services/event-security</loc>
+    <image:image>
+      <image:loc>https://www.fortissecured.co.uk/images/event-security.jpg</image:loc>
+      <image:title>Event Security Services</image:title>
+      <image:caption>Professional Event Security and Crowd Management</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.fortissecured.co.uk/services/risk-assessment</loc>
+    <image:image>
+      <image:loc>https://www.fortissecured.co.uk/images/risk-assessment.jpg</image:loc>
+      <image:title>Risk Assessment Services</image:title>
+      <image:caption>Professional Security Risk Assessment and Consulting</image:caption>
+    </image:image>
+  </url>
+</urlset> 
