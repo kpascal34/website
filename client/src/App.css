@@ -1,15 +1,15 @@
 :root {
   /* Light Mode Colors (Default) */
-  --background-primary: #FFFFFF;
-  --background-secondary: #F9F9F9;
+  --background-primary: #ffffff;
+  --background-secondary: #f8f9fa;
   --text-primary: #333333;
   --text-secondary: #666666;
-  --primary-color: #3D5B6E;
-  --secondary-color: #57ADCF;
-  --accent-color: #FF6F61;
-  --border-color: #E5E5E5;
+  --primary-color: #57ADCF;
+  --secondary-color: #3D5B6E;
+  --accent-color: #FFD700;
+  --border-color: #3D5B6E;
   --surface: #FFFFFF;
-  --hover-background: #F5F5F5;
+  --hover-background: #f0f0f0;
   --button-text: #FFFFFF;
   --link-color: #3D5B6E;
   --link-hover: #57ADCF;
@@ -60,6 +60,8 @@
   --text-color-light: #495057;
   --error-color: #dc3545;
   --success-color: #28a745;
+
+  --card-background: #ffffff;
 }
 
 [data-theme="dark"] {
@@ -67,24 +69,26 @@
   --secondary-brand: #3D5B6E;
   --background: #1A2A35;
   --surface: #2E4353;
-  --text-primary: #E0E0E0;
-  --text-secondary: #B0BEC5;
+  --text-primary: #333333;
+  --text-secondary: #666666;
   --accent-1: #FFA726;
   --accent-2: #FFEE58;
   --success: #81C784;
   --error: #EF5350;
   --warning: #FFCA28;
-  --background-primary: #1E1E1E;
+  --background-primary: #E0E0E0;
   --text-primary: #E0E0E0;
   --primary-color: #57ADCF;
   --secondary-color: #3D5B6E;
   --accent-color: #FFD700;
-  --border-color: #333333;
-  --shadow-color: rgba(0, 0, 0, 0.3);
+  --border-color: #3D5B6E;
+  --shadow-color: rgba(0, 0, 0, 0.15);
   --success-color: #4CAF50;
   --warning-color: #FFD700;
   --error-color: #FF6B6B;
   --focus-ring: rgba(87, 173, 207, 0.4);
+
+  --card-background: #E0E0E0;
 }
 
 /* Smooth transitions for theme switching */
@@ -142,7 +146,7 @@ body {
 }
 
 .nav-links a {
-  color: var(--text-color);
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
@@ -237,24 +241,22 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to bottom, rgba(42, 53, 70, 0.7), rgba(42, 53, 70, 0.4));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
   z-index: 1;
 }
 
 .hero-content {
-  max-width: 800px;
   position: relative;
   z-index: 2;
+  max-width: 800px;
   padding: 0 2rem;
-  opacity: 0;
-  transform: translateY(20px);
-  will-change: transform, opacity;
-  animation: fadeInUp 0.5s ease forwards;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-logo {
   margin-bottom: 2rem;
-  min-height: 80px; /* Prevent layout shift */
+  min-height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -264,15 +266,6 @@ body {
   max-width: 300px;
   height: auto;
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
-  transition: opacity 0.3s ease, transform 0.5s ease;
-}
-
-.hero-logo h1 {
-  font-size: 4rem;
-  margin: 0;
-  font-weight: 800;
-  letter-spacing: 4px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-content h1 {
@@ -280,7 +273,7 @@ body {
   margin-bottom: 1rem;
   font-weight: 800;
   letter-spacing: 4px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
 }
 
 .hero-content p {
@@ -288,20 +281,22 @@ body {
   margin-bottom: 2.5rem;
   letter-spacing: 2px;
   font-weight: 500;
+  color: #ffffff;
 }
 
 .cta-group {
   display: flex;
   gap: 1.5rem;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .cta-button {
   background-color: var(--primary-color);
-  color: var(--button-text);
+  color: #333333;
   padding: 12px 24px;
   border-radius: 4px;
-  border: none;
+  border: 2px solid var(--border-color);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -312,9 +307,8 @@ body {
   justify-content: center;
 }
 
-.cta-button:hover,
-.cta-button:focus {
-  background-color: var(--secondary-color);
+.cta-button:hover {
+  background-color: var(--hover-background);
 }
 
 .cta-button:focus-visible {
@@ -335,7 +329,7 @@ body {
 
 .about {
   padding: 6rem 10%;
-  background-color: var(--secondary-color);
+  background-color: #ffffff;
   position: relative;
   overflow: hidden;
 }
@@ -365,12 +359,12 @@ body {
   margin-bottom: 2rem;
   letter-spacing: 2px;
   text-align: center;
-  color: var(--accent-color);
+  color: #333333;
 }
 
 .about p {
   font-size: 1.1rem;
-  color: #cccccc;
+  color: #666666;
   line-height: 1.8;
   margin-bottom: 1.5rem;
 }
@@ -381,7 +375,7 @@ body {
 
 .services {
   padding: 6rem 10%;
-  background-color: var(--primary-color);
+  background-color: #ffffff;
 }
 
 .services h2 {
@@ -389,13 +383,14 @@ body {
   margin-bottom: 1rem;
   font-size: 2.5rem;
   letter-spacing: 2px;
+  color: #333333;
 }
 
 .services > p {
   text-align: center;
   max-width: 800px;
   margin: 0 auto 4rem;
-  color: #cccccc;
+  color: #666666;
 }
 
 .service-grid {
@@ -940,7 +935,7 @@ html {
 /* Testimonials Section */
 .testimonials {
   padding: 6rem 10%;
-  background: var(--primary-color);
+  background: #ffffff;
 }
 
 .testimonial-grid {
@@ -985,7 +980,8 @@ html {
 }
 
 .testimonial-card {
-  background: var(--secondary-color);
+  background: var(--card-background);
+  color: #333333;
   padding: 2.5rem;
   border-radius: 12px;
   position: relative;
@@ -1017,7 +1013,7 @@ html {
   font-size: 1.2rem;
   line-height: 1.6;
   margin: 1.5rem 0;
-  color: #cccccc;
+  color: #666666;
   flex-grow: 1;
   position: relative;
   z-index: 1;
@@ -1216,7 +1212,7 @@ section.visible {
 
 .contact {
   padding: 2rem 10%;
-  background: var(--primary-color);
+  background: #ffffff;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -1240,16 +1236,13 @@ section.visible {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
   letter-spacing: 2px;
-  background: linear-gradient(45deg, var(--text-color), var(--accent-color));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientFlow 3s ease infinite;
+  color: #333333;
   text-align: center;
 }
 
 .contact > p {
   font-size: 1rem;
-  color: #cccccc;
+  color: #666666;
   margin-bottom: 1.5rem;
   max-width: 500px;
   margin-left: auto;
@@ -1258,13 +1251,13 @@ section.visible {
 }
 
 .contact-form {
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
   display: grid;
   gap: 1rem;
   max-width: 500px;
   margin: 0 auto;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
@@ -1275,10 +1268,10 @@ section.visible {
 .form-group textarea {
   width: 100%;
   padding: 0.8rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border: 2px solid #cccccc;
   border-radius: 6px;
-  color: var(--text-color);
+  color: #333333;
   font-size: 1rem;
   transition: all 0.3s ease;
   box-sizing: border-box;
@@ -1551,21 +1544,21 @@ section.visible {
 }
 
 .hero-social-links a {
-  color: var(--text-color);
-  transition: color 0.3s ease, transform 0.3s ease;
+  color: #E0E0E0;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background-color: rgba(61, 91, 110, 0.8);
 }
 
 .hero-social-links a:hover {
   color: var(--accent-color);
   transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.15);
+  background-color: var(--primary-color);
 }
 
 .hero-social-links svg {
@@ -1578,7 +1571,7 @@ section.visible {
   margin-bottom: 3rem;
   font-size: 2.5rem;
   letter-spacing: 2px;
-  color: var(--accent-color);
+  color: #333333;
 }
 
 /* Contact Page Styles */
@@ -1828,7 +1821,7 @@ a:hover {
 
 /* Surface elements */
 .card, .modal, .dropdown {
-  background-color: var(--surface);
+  background-color: var(--card-background);
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-sm);
 }
@@ -1879,4 +1872,77 @@ a:hover {
 
 [data-theme="dark"] .slide-indicator.active {
   background-color: var(--accent-color);
+}
+
+/* Navigation Links */
+[data-theme="dark"] .nav-links a {
+  color: #ffffff;
+}
+
+/* About Section */
+[data-theme="dark"] .about {
+  background-color: var(--card-background);
+}
+
+[data-theme="dark"] .about h2,
+[data-theme="dark"] .about p {
+  color: #ffffff;
+}
+
+/* Services Section */
+[data-theme="dark"] .services {
+  background-color: var(--card-background);
+}
+
+[data-theme="dark"] .services h2,
+[data-theme="dark"] .services > p {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .service-card {
+  background-color: var(--card-background);
+}
+
+[data-theme="dark"] .service-card h3,
+[data-theme="dark"] .service-card p {
+  color: #ffffff;
+}
+
+/* Testimonials Section */
+[data-theme="dark"] .testimonials {
+  background-color: var(--card-background);
+}
+
+[data-theme="dark"] .testimonials h2 {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .testimonial-card {
+  background-color: var(--card-background);
+}
+
+[data-theme="dark"] .testimonial-card p,
+[data-theme="dark"] .testimonial-card .author {
+  color: #ffffff;
+}
+
+/* Contact Section */
+[data-theme="dark"] .contact {
+  background-color: var(--card-background);
+}
+
+[data-theme="dark"] .contact h2,
+[data-theme="dark"] .contact > p {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .contact-form {
+  background-color: var(--card-background);
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea {
+  background-color: var(--card-background);
+  color: #ffffff;
+  border-color: var(--border-color);
 }
