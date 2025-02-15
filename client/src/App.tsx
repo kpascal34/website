@@ -13,6 +13,7 @@ import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
+import FloatingContact from './components/FloatingContact/FloatingContact';
 
 interface FormData {
   name: string;
@@ -360,6 +361,8 @@ const App: React.FC = () => {
           <Route path="/cookies" element={<Cookies />} />
         </Routes>
 
+        <FloatingContact />
+        
         <footer className="footer">
           <div className="footer-content">
             <div className="footer-section">
@@ -413,7 +416,7 @@ const App: React.FC = () => {
             </div>
           </div>
         </footer>
-    </div>
+      </div>
     </Router>
   );
 };

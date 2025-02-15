@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 const publicPath = '/';
@@ -11,7 +13,7 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: isDevelopment ? '[name].js' : '[name].[contenthash].js',
     publicPath: publicPath,
     clean: true
   },
@@ -25,7 +27,14 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: [
-                '@babel/preset-env',
+                ['@babel/preset-env', {
+                  targets: {
+                    browsers: ['>0.2%', 'not dead', 'not op_mini all']
+                  },
+                  modules: false,
+                  useBuiltIns: 'usage',
+                  corejs: 3
+                }],
                 ['@babel/preset-react', { runtime: 'automatic' }],
                 '@babel/preset-typescript',
               ],
@@ -38,13 +47,28 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: {
+                auto: true,
+                localIdentName: isDevelopment
+                  ? '[name]__[local]--[hash:base64:5]'
+                  : '[hash:base64]'
+              }
+            }
+          },
+          'postcss-loader'
+        ],
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg|ico)$/i,
-        type: 'asset/resource',
+        type: 'asset',
         generator: {
-          filename: 'images/[name][ext]'
+          filename: 'images/[name].[contenthash][ext]'
         }
       }
     ],
@@ -62,7 +86,19 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
       publicPath: publicPath,
-      favicon: './public/favicon.ico'
+      favicon: './public/favicon.ico',
+      minify: !isDevelopment && {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      }
     }),
     new CopyPlugin({
       patterns: [
@@ -75,6 +111,37 @@ module.exports = {
         },
       ],
     }),
+    !isDevelopment && new CompressionPlugin({
+      algorithm: 'gzip',
+      test: /\.(js|css|html|svg)$/,
+      threshold: 10240,
+      minRatio: 0.8,
+    }),
+    !isDevelopment && new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+      maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+      runtimeCaching: [
+        {
+          urlPattern: /\.(?:png|jpg|jpeg|svg|gif)$/,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'images',
+            expiration: {
+              maxEntries: 60,
+              maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
+            },
+          },
+        },
+        {
+          urlPattern: /\.(?:js|css)$/,
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'static-resources',
+          },
+        },
+      ],
+    })
   ].filter(Boolean),
   devServer: {
     static: {
@@ -86,6 +153,38 @@ module.exports = {
     open: true,
     historyApiFallback: true,
     host: 'localhost',
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
+    },
+    http2: true,
+    https: true
+  },
+  optimization: {
+    moduleIds: 'deterministic',
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+      maxInitialRequests: Infinity,
+      minSize: 0,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            const packageName = module.context.match(
+              /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+            )[1];
+            return `vendor.${packageName.replace('@', '')}`;
+          },
+        },
+      },
+    },
+  },
+  performance: {
+    hints: !isDevelopment ? 'warning' : false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
   },
   devtool: isDevelopment ? 'eval-source-map' : 'source-map',
 }; 
