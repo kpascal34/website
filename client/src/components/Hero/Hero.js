@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ResponsiveImage } from '../Image/ResponsiveImage';
 import './Hero.css';
 
-const Hero = ({ currentSlide, isLoading, loadedImages }) => {
+const Hero = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadedImages, setLoadedImages] = useState([]);
+
   const slides = [
     {
       image: '/images/hero.jpg',
@@ -25,6 +28,29 @@ const Hero = ({ currentSlide, isLoading, loadedImages }) => {
     }
   ];
 
+  useEffect(() => {
+    // Preload images
+    slides.forEach((slide, index) => {
+      const img = new Image();
+      img.src = slide.image;
+      img.onload = () => {
+        setLoadedImages(prev => [...prev, index]);
+        if (index === 0) setIsLoading(false);
+      };
+    });
+
+    // Auto-advance slides
+    const interval = setInterval(() => {
+      setCurrentSlide(current => (current + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleSlideClick = (index) => {
+    setCurrentSlide(index);
+  };
+
   return (
     <section 
       className={`hero ${isLoading ? 'loading' : ''}`}
@@ -39,12 +65,11 @@ const Hero = ({ currentSlide, isLoading, loadedImages }) => {
           } ${loadedImages.includes(index) ? 'loaded' : ''}`}
           aria-hidden={currentSlide !== index}
         >
-          <ResponsiveImage
+          <img
             src={slide.image}
             alt={slide.title}
-            isHero={true}
-            loading="eager"
             className="hero-image"
+            loading={index === 0 ? "eager" : "lazy"}
           />
         </div>
       ))}
@@ -126,6 +151,7 @@ const Hero = ({ currentSlide, isLoading, loadedImages }) => {
             className={`slide-indicator ${currentSlide === index ? 'active' : ''}`}
             aria-label={`Go to slide ${index + 1}`}
             aria-current={currentSlide === index}
+            onClick={() => handleSlideClick(index)}
           />
         ))}
       </div>
