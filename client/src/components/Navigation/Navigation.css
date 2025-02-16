@@ -1,5 +1,5 @@
 .nav {
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.75);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   padding: 1rem;
   position: fixed;
@@ -97,7 +97,7 @@
     top: 100%;
     left: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.85);
     padding: 1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     flex-direction: column;
@@ -133,7 +133,7 @@
 }
 
 [data-theme="dark"] .nav {
-  background-color: rgba(18, 18, 18, 0.85);
+  background-color: rgba(18, 18, 18, 0.75);
   border-bottom: 1px solid var(--border-color);
   box-shadow: 0 4px 12px var(--shadow-color);
   backdrop-filter: blur(10px);
@@ -165,7 +165,7 @@
 /* Mobile Navigation Dark Theme */
 @media (max-width: 768px) {
   [data-theme="dark"] .nav-menu {
-    background-color: rgba(18, 18, 18, 0.95);
+    background-color: rgba(18, 18, 18, 0.85);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid var(--border-color);
