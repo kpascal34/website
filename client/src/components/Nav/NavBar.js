@@ -6,11 +6,13 @@ import styled from 'styled-components';
 const NavLink = styled(Link)`
   color: #333;
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 12px 20px;
+  background: rgba(0, 123, 255, 0.1);
+  border-radius: 4px;
   transition: all 0.2s ease;
   
   &:hover {
-    color: #007bff;
+    background: rgba(0, 123, 255, 0.2);
   }
 
   ${({ $secure }) => $secure && `
@@ -26,6 +28,17 @@ const StyledNav = styled.nav`
   display: flex;
   align-items: center;
   padding: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.98);
+  }
 `;
 
 const NavigationBar = () => {

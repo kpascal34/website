@@ -1,0 +1,42 @@
+.cta-section {
+    background: var(--security-bg-color);
+    padding: 2rem 5%;
+    margin: 3rem 0;
+  }
+  
+  .cta-content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  
+  .cta-button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+  }
+  
+  .cta-button {
+    background: var(--primary-security-color);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background: var(--primary-security-hover);
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .cta-content-wrapper {
+      text-align: center;
+    }
+    
+    .cta-button-container {
+      justify-content: center;
+    }
+  }

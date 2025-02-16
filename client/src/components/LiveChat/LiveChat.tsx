@@ -8,8 +8,20 @@ declare global {
 }
 
 const LiveChat: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Security-conscious initialization
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!hasInteracted) {
+        setIsOpen(false);
+      }
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [hasInteracted]);
 
   useEffect(() => {
     const loadTawkTo = () => {
@@ -70,7 +82,27 @@ const LiveChat: React.FC = () => {
     }
   }
 
-  return null; // This component doesn't render anything visible
+  return (
+    <div className={`live-chat ${isOpen ? 'open' : ''}`}>
+      {!isOpen && (
+        <button 
+          className="chat-opener"
+          onClick={() => {
+            setIsOpen(true);
+            setHasInteracted(true);
+          }}
+          aria-label="Open chat window"
+        >
+          <svg>{/* Your chat icon */}</svg>
+        </button>
+      )}
+      {isOpen && (
+        <div className="chat-window">
+          {/* Chat content */}
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default LiveChat; 
